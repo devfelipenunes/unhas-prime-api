@@ -1,4 +1,4 @@
-import Collaborator from "../entities/collaborator";
+import Collaborator from "../entities/Collaborator";
 import { AppDataSource } from "../database/data-source";
 
 const CollaboratorRepository = AppDataSource.getRepository(Collaborator);

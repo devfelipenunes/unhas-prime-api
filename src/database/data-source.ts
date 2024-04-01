@@ -4,8 +4,10 @@ import { CreateUsersTable1674307725393 } from "./migrations/1711993716221-Create
 import User from "../entities/User";
 import { CreateServicosTable1639440773224 } from "./migrations/1711996309209-CreateServicoTable";
 import Servico from "../entities/Servico";
-import collaborator from "../entities/collaborator";
 import { CreateCollaboratorTable1711998753405 } from "./migrations/1711998753405-CreateCollaboratorTable";
+import Sale from "../entities/Sale";
+import { CreateSaleTable1711998753405 } from "./migrations/1712002938181-CreateSaleTable";
+import Collaborator from "../entities/Collaborator";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -16,11 +18,12 @@ export const AppDataSource = new DataSource({
   database: "unhas_prime",
   synchronize: true,
   logging: false,
-  entities: [User, Servico, collaborator],
+  entities: [User, Servico, Collaborator, Sale],
   migrations: [
     CreateCollaboratorTable1711998753405,
     CreateServicosTable1639440773224,
     CreateUsersTable1674307725393,
+    CreateSaleTable1711998753405,
   ],
   subscribers: [],
 });
