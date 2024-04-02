@@ -8,6 +8,7 @@ import { CreateCollaboratorTable1711998753405 } from "./migrations/1711998753405
 import Sale from "../entities/Sale";
 import { CreateSaleTable1711998753405 } from "./migrations/1712002938181-CreateSaleTable";
 import Collaborator from "../entities/Collaborator";
+import { AddTimestampsToSaleTable1639442700001 } from "./migrations/1712061489239-AddTimestampsToSaleTable";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -24,6 +25,7 @@ export const AppDataSource = new DataSource({
     CreateServicosTable1639440773224,
     CreateUsersTable1674307725393,
     CreateSaleTable1711998753405,
+    AddTimestampsToSaleTable1639442700001,
   ],
   subscribers: [],
 });

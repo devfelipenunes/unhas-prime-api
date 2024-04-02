@@ -4,8 +4,9 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
-
 import Servico from "./Servico";
 import Collaborator from "./Collaborator";
 
@@ -27,6 +28,12 @@ class Sale {
   @ManyToOne(() => Servico)
   @JoinColumn({ name: "servico_id" })
   servico: Servico;
+
+  @CreateDateColumn({ name: "created_at" })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: "updated_at" })
+  updatedAt: Date;
 }
 
 export default Sale;
