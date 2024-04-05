@@ -12,11 +12,11 @@ import { AddTimestampsToSaleTable1639442700001 } from "./migrations/171206148923
 
 export const AppDataSource = new DataSource({
   type: "mysql",
-  host: "localhost",
+  host: "149.100.155.154",
   port: 3306,
-  username: "root",
-  password: "root",
-  database: "unhas_prime",
+  username: "u245073799_felipinhopeni",
+  password: "12345678#Fe",
+  database: "u245073799_felipetermuxga",
   synchronize: true,
   logging: false,
   entities: [User, Servico, Collaborator, Sale],
