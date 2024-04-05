@@ -4,6 +4,8 @@ import cors from "cors";
 import { AppDataSource } from "./database/data-source";
 import routers from "./routes/routes";
 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 app.use(cors());
@@ -12,7 +14,7 @@ app.use(routers);
 
 AppDataSource.initialize().then(async () => {
   console.log("Data Source has been initialized!");
-  app.listen(3000, () => {
+  app.listen(PORT, () => {
     console.log("Server is running on port 3000");
   });
 });
