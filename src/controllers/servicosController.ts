@@ -16,7 +16,7 @@ servicoRouter.post("/", async (req: Request, res: Response) => {
   try {
     const { nome, preco } = req.body;
     const servico = await ServicoRepository.criarServico(nome, preco);
-    res.json(servico);
+    res.json({ message: "Serviço criado", servico });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -33,7 +33,7 @@ servicoRouter.put("/:id", async (req: Request, res: Response) => {
       preco
     );
     if (servico) {
-      res.json({ message: "Serviço atulizado" });
+      res.json({ message: "Serviço atualizado" });
     } else {
       res.status(404).json({ message: "Serviço não encontrado" });
     }

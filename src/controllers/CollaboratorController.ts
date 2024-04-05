@@ -16,7 +16,7 @@ collaboratorRouter.post("/", async (req, res) => {
   try {
     const { nome } = req.body;
     const collaborator = await CollaboratorRepository.createCollaborator(nome);
-    res.json(collaborator);
+    res.json({ message: "Colaborador criado", collaborator });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -49,7 +49,7 @@ collaboratorRouter.delete("/:id", async (req, res) => {
       collaboratorId
     );
     if (success) {
-      res.status(204).json({ message: "Colaborador excluído" }); // Retorna 204 No Content para indicar exclusão bem-sucedida
+      res.status(204).json({ message: "Colaborador excluído" });
     } else {
       res.status(404).json({ message: "Colaborador não encontrado" });
     }
