@@ -28,11 +28,12 @@ collaboratorRouter.post("/", async (req, res) => {
 collaboratorRouter.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { nome } = req.body;
+    const { nome, percentage } = req.body;
     const collaboratorId = parseInt(id, 10);
     const collaborator = await CollaboratorRepository.updateCollaborator(
       collaboratorId,
-      nome
+      nome,
+      percentage
     );
     if (collaborator) {
       res.json({ message: "Colaborador atualizado" });

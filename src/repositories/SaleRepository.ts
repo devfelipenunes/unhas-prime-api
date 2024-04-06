@@ -20,6 +20,24 @@ const getSale = (): Promise<Sale[]> => {
   return SaleRepository.find();
 };
 
+const updateSale = async (
+  id: number,
+  paymentMethod: string,
+  collaboratorId: number,
+  servicoId: number
+): Promise<boolean> => {
+  const sale = await SaleRepository.findOne({ where: { id } });
+  if (sale) {
+    sale.collaboratorId = id;
+    sale.servicoId = servicoId;
+    sale.collaboratorId = collaboratorId;
+    sale.paymentMethod = paymentMethod;
+    await SaleRepository.save(sale);
+    return true;
+  }
+  return false;
+};
+
 const getSaleDetails = () => {
   return SaleRepository.createQueryBuilder("sale")
     .innerJoinAndSelect("sale.collaborator", "collaborator")
@@ -28,6 +46,7 @@ const getSaleDetails = () => {
       "sale.id",
       "sale.created_at as sale_created_at",
       "sale.updated_at as sale_updated_at",
+      "sale.paymentMethod", // Adicione esta linha para selecionar o campo paymentMethod
       "collaborator",
       "servico",
     ])
@@ -62,10 +81,21 @@ const getSalesByServiceId = (serviceId: number): Promise<Sale[]> => {
   return SaleRepository.find({ where: { servicoId: serviceId } });
 };
 
+const deleteSale = async (id: number): Promise<boolean> => {
+  const sale = await SaleRepository.findOne({ where: { id } });
+  if (sale) {
+    await SaleRepository.remove(sale);
+    return true;
+  }
+  return false;
+};
+
 export default {
   createSale,
   getSale,
   getSaleDetails,
   getSalesByCollaboratorId,
   getSalesByServiceId,
+  updateSale,
+  deleteSale,
 };

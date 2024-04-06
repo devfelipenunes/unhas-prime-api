@@ -19,11 +19,13 @@ const getCollaborator = (): Promise<Collaborator[]> => {
 
 const updateCollaborator = async (
   id: number,
-  nome: string
+  nome: string,
+  percentage: number
 ): Promise<Collaborator | null> => {
   const collaborator = await CollaboratorRepository.findOne({ where: { id } });
   if (collaborator) {
     collaborator.nome = nome;
+    collaborator.percentage = percentage;
     await CollaboratorRepository.save(collaborator);
     return collaborator;
   }
