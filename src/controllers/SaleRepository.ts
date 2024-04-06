@@ -41,9 +41,13 @@ saleRouter.get("/", async (_req: Request, res: Response) => {
 
 saleRouter.post("/", async (req: Request, res: Response) => {
   try {
-    const { collaboratorId, servicoId } = req.body;
-    const sale = await SaleRepository.createSale(collaboratorId, servicoId);
-    res.json(sale);
+    const { collaboratorId, servicoId, paymentMethod } = req.body;
+    const sale = await SaleRepository.createSale(
+      collaboratorId,
+      servicoId,
+      paymentMethod
+    );
+    res.json({ message: "Venda criada", sale });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }

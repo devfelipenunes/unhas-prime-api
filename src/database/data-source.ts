@@ -9,6 +9,8 @@ import Sale from "../entities/Sale";
 import { CreateSaleTable1711998753405 } from "./migrations/1712002938181-CreateSaleTable";
 import Collaborator from "../entities/Collaborator";
 import { AddTimestampsToSaleTable1639442700001 } from "./migrations/1712061489239-AddTimestampsToSaleTable";
+import { AddPercentageColumnToCollaborator1711998753406 } from "./migrations/1712426251779-addPercentageColumn";
+import { AddPaymentMethodToSaleTable1711998753406 } from "./migrations/1712426780067-addPaymentMethod";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -26,6 +28,8 @@ export const AppDataSource = new DataSource({
     CreateUsersTable1674307725393,
     CreateSaleTable1711998753405,
     AddTimestampsToSaleTable1639442700001,
+    AddPercentageColumnToCollaborator1711998753406,
+    AddPaymentMethodToSaleTable1711998753406,
   ],
   subscribers: [],
 });

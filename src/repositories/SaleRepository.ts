@@ -5,11 +5,14 @@ const SaleRepository = AppDataSource.getRepository(Sale);
 
 const createSale = async (
   collaboratorId: number,
-  servicoId: number
+  servicoId: number,
+  paymentMethod: string
 ): Promise<Sale> => {
   const sale = new Sale();
   sale.collaboratorId = collaboratorId;
   sale.servicoId = servicoId;
+  sale.paymentMethod = paymentMethod;
+
   return SaleRepository.save(sale);
 };
 

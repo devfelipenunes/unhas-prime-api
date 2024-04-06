@@ -29,6 +29,9 @@ class Sale {
   @JoinColumn({ name: "servico_id" })
   servico: Servico;
 
+  @Column({ name: "paymentMethod", nullable: false })
+  paymentMethod: string;
+
   @CreateDateColumn({ name: "created_at" })
   createdAt: Date;
 

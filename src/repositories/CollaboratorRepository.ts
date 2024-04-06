@@ -3,9 +3,13 @@ import { AppDataSource } from "../database/data-source";
 
 const CollaboratorRepository = AppDataSource.getRepository(Collaborator);
 
-const createCollaborator = (nome: string): Promise<Collaborator> => {
+const createCollaborator = (
+  nome: string,
+  percentage: number
+): Promise<Collaborator> => {
   const collaborator = new Collaborator();
   collaborator.nome = nome;
+  collaborator.percentage = percentage;
   return CollaboratorRepository.save(collaborator);
 };
 

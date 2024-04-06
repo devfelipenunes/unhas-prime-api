@@ -7,6 +7,9 @@ class Collaborator {
 
   @Column("varchar", { length: 100, nullable: false })
   nome: string;
+
+  @Column("decimal", { precision: 10, scale: 2, nullable: false })
+  percentage: number;
 }
 
 export default Collaborator;

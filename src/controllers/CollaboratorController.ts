@@ -14,8 +14,11 @@ collaboratorRouter.get("/", async (_req: Request, res: Response) => {
 
 collaboratorRouter.post("/", async (req, res) => {
   try {
-    const { nome } = req.body;
-    const collaborator = await CollaboratorRepository.createCollaborator(nome);
+    const { nome, percentage } = req.body;
+    const collaborator = await CollaboratorRepository.createCollaborator(
+      nome,
+      percentage
+    );
     res.json({ message: "Colaborador criado", collaborator });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
