@@ -11,6 +11,7 @@ import Collaborator from "../entities/Collaborator";
 import { AddTimestampsToSaleTable1639442700001 } from "./migrations/1712061489239-AddTimestampsToSaleTable";
 import { AddPercentageColumnToCollaborator1711998753406 } from "./migrations/1712426251779-addPercentageColumn";
 import { AddPaymentMethodToSaleTable1711998753406 } from "./migrations/1712426780067-addPaymentMethod";
+import { AddCollaboratorPercentageInSaleColumn1712586875211 } from "./migrations/1712586875211-addCollaboratorPercentageInSaleColumn";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -30,6 +31,7 @@ export const AppDataSource = new DataSource({
     AddTimestampsToSaleTable1639442700001,
     AddPercentageColumnToCollaborator1711998753406,
     AddPaymentMethodToSaleTable1711998753406,
+    AddCollaboratorPercentageInSaleColumn1712586875211,
   ],
   subscribers: [],
 });

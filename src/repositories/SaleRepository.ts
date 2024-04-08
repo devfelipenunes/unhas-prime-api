@@ -6,12 +6,14 @@ const SaleRepository = AppDataSource.getRepository(Sale);
 const createSale = async (
   collaboratorId: number,
   servicoId: number,
-  paymentMethod: string
+  paymentMethod: string,
+  collaboratorPercentage: string
 ): Promise<Sale> => {
   const sale = new Sale();
   sale.collaboratorId = collaboratorId;
   sale.servicoId = servicoId;
   sale.paymentMethod = paymentMethod;
+  sale.collaboratorPercentage = collaboratorPercentage;
 
   return SaleRepository.save(sale);
 };
@@ -32,6 +34,7 @@ const updateSale = async (
     sale.servicoId = servicoId;
     sale.collaboratorId = collaboratorId;
     sale.paymentMethod = paymentMethod;
+
     await SaleRepository.save(sale);
     return true;
   }
@@ -46,7 +49,8 @@ const getSaleDetails = () => {
       "sale.id",
       "sale.created_at as sale_created_at",
       "sale.updated_at as sale_updated_at",
-      "sale.paymentMethod", // Adicione esta linha para selecionar o campo paymentMethod
+      "sale.paymentMethod",
+      "sale.collaborator_percentage",
       "collaborator",
       "servico",
     ])

@@ -61,11 +61,13 @@ saleRouter.put("/:id", async (req: Request, res: Response) => {
 
 saleRouter.post("/", async (req: Request, res: Response) => {
   try {
-    const { collaboratorId, servicoId, paymentMethod } = req.body;
+    const { collaboratorId, servicoId, paymentMethod, collaboratorPercentage } =
+      req.body;
     const sale = await SaleRepository.createSale(
       collaboratorId,
       servicoId,
-      paymentMethod
+      paymentMethod,
+      collaboratorPercentage
     );
     res.json({ message: "Venda criada", sale });
   } catch (error: any) {

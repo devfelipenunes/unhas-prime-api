@@ -37,6 +37,9 @@ class Sale {
 
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt: Date;
+
+  @Column({ name: "collaborator_percentage", nullable: true })
+  collaboratorPercentage: string;
 }
 
 export default Sale;
