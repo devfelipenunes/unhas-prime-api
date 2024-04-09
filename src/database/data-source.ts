@@ -21,6 +21,7 @@ export const AppDataSource = new DataSource({
   password: "12345678#Fe",
   database: "u245073799_felipetermuxga",
   synchronize: true,
+  timezone: "+03:00",
   logging: false,
   entities: [User, Servico, Collaborator, Sale],
   migrations: [
