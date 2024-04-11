@@ -18,3 +18,22 @@ AppDataSource.initialize().then(async () => {
     console.log("Server is running on port 3000");
   });
 });
+
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+const path = require("path");
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Documentação da API",
+      version: "1.0.0",
+      description: "Descrição da API",
+    },
+  },
+  apis: [path.join(__dirname, "./**/*.ts")], // Caminho para os arquivos que contêm as definições das rotas
+};
+
+const specs = swaggerJsdoc(options);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
